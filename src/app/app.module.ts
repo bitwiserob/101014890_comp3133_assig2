@@ -20,13 +20,17 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { RouterModule } from '@angular/router';
 import { CurrencyPipe } from './currency.pipe';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     EmployeeViewComponent,
-    CurrencyPipe
+    CurrencyPipe,
+    EmployeeFormComponent,
+    EmployeeAddComponent,
   ],
   imports: [
     BrowserModule,

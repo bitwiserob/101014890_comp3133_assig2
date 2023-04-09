@@ -1,0 +1,46 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <h2>Edit</h2>
+    <br>
+    <label>Name</label>
+    <br>
+    <mat-form-field>
+        
+        <input matInput formControlName="first_name" placeholder="First Name">
+      <mat-error *ngIf="employeeForm.get('first_name')?.hasError('required')">First name is required</mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field>
+      <input matInput formControlName="last_name" placeholder="Last Name">
+      <mat-error *ngIf="employeeForm.get('last_name')?.hasError('required')">Last name is required</mat-error>
+    </mat-form-field>
+    <br>
+    <label>Email</label>
+    <br>
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Email">
+      <mat-error *ngIf="employeeForm.get('email')?.hasError('required')">Email is required</mat-error>
+    </mat-form-field>
+    <br>
+    <label>Gender</label>
+    <br>
+    <mat-form-field>
+      <mat-select formControlName="gender" placeholder="Gender">
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+      <mat-error *ngIf="employeeForm.get('gender')?.hasError('required')">Gender is required</mat-error>
+    </mat-form-field>
+    <br>
+    <label>Salary</label>
+    <br>
+    <mat-form-field>
+      <input matInput formControlName="salary" placeholder="Salary">
+      <mat-error *ngIf="employeeForm.get('salary')?.hasError('required')">Salary is required</mat-error>
+    </mat-form-field>
+    <br>
+    <div class="form-buttons">
+      <button type="submit" mat-raised-button color="primary" [disabled]="employeeForm.invalid">Save</button>
+    </div>
+  </form>
+  

@@ -1,4 +1,6 @@
 <h1>Employees</h1>
+<button color="primary" mat-button [routerLink]="['/add']" class="button">Add employee</button>
+
 <mat-card *ngFor="let employee of employees" class="employee-card">
     <mat-card-header>
       <mat-card-title>{{ employee.first_name }} {{ employee.last_name }}</mat-card-title>
@@ -9,6 +11,6 @@
       <p>Salary: {{ employee.salary | currency }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button color="primary" mat-button [routerLink]="['/employee', employee._id]" class="button">View Details</button>
+      <button color="primary" mat-button [routerLink]="['/view', employee._id]" class="button">View Details</button>
     </mat-card-actions>
   </mat-card>
