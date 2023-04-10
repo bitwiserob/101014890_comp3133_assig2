@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../model/employee';
 import { EmployeeService } from '../employee.service';
@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class EmployeeFormComponent implements OnInit {
 
   employee?: Employee = undefined;
-  @Output() saveEmployee = new EventEmitter<any>();
 
   employeeForm: FormGroup;
 
@@ -33,6 +32,13 @@ export class EmployeeFormComponent implements OnInit {
         data => {
           this.employee = data;
           console.log(data)
+          this.employeeForm.patchValue({
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            gender: data.gender,
+            salary: data.salary
+          });
         }
       );
     }
@@ -40,6 +46,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   onSubmit() {
+    
     if (this.employeeForm.valid && this.employee) {
       const employee: Employee = {
         _id: this.employee._id,
@@ -49,7 +56,18 @@ export class EmployeeFormComponent implements OnInit {
         gender: this.employeeForm.value.gender,
         salary: this.employeeForm.value.salary,
       };
-      this.saveEmployee.emit(employee);
+
+      this.employeeService.editEmployee(employee).subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+
+    }else{
+      console.log("invalid form");
     }
   }
 

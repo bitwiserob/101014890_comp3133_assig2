@@ -40,11 +40,11 @@ export class EmployeeAddComponent {
     this.employeeService.addEmployee(employee).subscribe(
       (data) => {
         console.log('Employee added successfully', data);
-        this.router.navigate(['/employees']);
+        this.router.navigate(['/all']);
       },
       (error) => {
         console.error('Error adding employee: ', error);
-        // Display error message to the user
+        
       }
     );
   }

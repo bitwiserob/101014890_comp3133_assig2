@@ -95,27 +95,28 @@ export class EmployeeService {
         'Content-Type': 'application/json'
       })
     };
+  
     const query = `mutation {
-      updateEmployee(
+      updateEmployeeById(
         _id: "${employee._id}",
         first_name: "${employee.first_name}",
         last_name: "${employee.last_name}",
         email: "${employee.email}",
-        salary: ${employee.salary},
-        gender: "${employee.gender}"
+        gender: "${employee.gender}",
+        salary: ${employee.salary}
       ) {
         _id
         first_name
         last_name
         email
-        department
-        salary
         gender
+        salary
       }
     }`;
+  
     return this.http.post<any>(this.apiUrl, {query: query}, httpOptions)
       .pipe( 
-        map(res => res.data.updateEmployee)
+        map(res => res.data.updateEmployeeById)
       );
   }
   addEmployee(employee: Employee): Observable<any> {

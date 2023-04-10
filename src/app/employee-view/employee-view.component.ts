@@ -17,7 +17,6 @@ export class EmployeeViewComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(this.route.snapshot.paramMap);
     if(id){
       this.employeeService.getEmployeeById(id).subscribe(
         data => {
