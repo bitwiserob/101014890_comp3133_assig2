@@ -6,7 +6,7 @@ import { gql } from 'graphql-tag';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:4000/graphql';
+  private apiUrl = 'https://101014890-comp-3133-assignment1.vercel.app/graphql';
 
   constructor() {}
 
